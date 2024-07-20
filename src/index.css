@@ -1,0 +1,50 @@
+:root {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: #020015;
+
+  --body-font-family: "Roboto";
+
+  --display-font-size: 57px;
+  --display-letter-spacing: -0.25px;
+  --display-line-height: 64;
+
+  --headline-font-size: 32px;
+  --headline-letter-spacing: 0px;
+  --headline-line-height: 40;
+
+  --title-font-size: 22px;
+  --title-letter-spacing: 0px;
+  --title-line-height: 28;
+
+  --body-font-size: 16px;
+  --body-letter-spacing: 0.5px;
+  --body-line-height: 24;
+
+  --label-font-size: 14px;
+  --label-letter-spacing: 0.1px;
+  --label-line-height: 20;
+
+  --primary: #47672f;
+  --on-primary: #ffffff;
+  --secondary-container: #DAE7CA;
+  --on-secondary-container: #141E0C;
+  --outline-variant: #C4C8BB;
+  --on-surface-variant: #44483E;
+  --yellow: rgb(242, 204, 64);
+  --error-container: #FFDAD6;
+  --on-error-container: #410002;
+}
+
+
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
