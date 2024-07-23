@@ -1,0 +1,211 @@
+/* navbar.module.css */
+.nav {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--default-font-family);
+    /* background-color: #1E1E1E; */
+}
+  
+  .navContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    position: relative;
+  }
+  
+  .link{
+    color: #F3F5F6;
+    text-align: center;
+    text-decoration: none;
+    font-size: var(--label-large-font-size); 
+    letter-spacing: var(--label-large-letter-spacing);
+    /* line-height: var(--label-large-line-height);    */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .dropLink{
+    text-decoration: none;
+    margin: 0;
+    padding: 12px;
+    text-align: start;
+  }
+
+  .dropLink:hover{
+    background-color: #5E5E5E;
+    transition: ease-in .25s;
+  }
+
+  .link:hover{
+    text-decoration: underline;
+    transition: ease-in .25s;
+  }
+
+  .navList {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .navList li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .rightContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .bookButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 16px;
+    padding: 16px;
+    gap: 16px;
+    background-color: var(--secondary-color);
+    outline: none;
+    border: none;
+    height: 56px;
+    cursor: pointer;
+  }
+  
+  .icon {
+    display: flex;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .menu{
+    margin: 0;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .dropDownList{
+    margin: 0;
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 168px;
+    border-radius: 4px;
+    background-color: #303030;
+    position: absolute;
+    top: 91px;
+    right: 5px;
+    z-index: 99999px;
+    box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
+  }
+
+
+  .dropDownList li{
+    color: #F3F5F6;
+    text-align: start;
+    text-decoration: none;
+    font-size: var(--label-large-font-size); 
+    letter-spacing: var(--label-large-letter-spacing);
+    /* line-height: var(--label-large-line-height);    */
+    list-style: none;
+    margin: 0;
+  }
+
+  @media only screen and (max-width: 1024px){
+    .logoContainer img{
+      width: 51px;
+      height: 41.25px;
+    }
+
+    .link{
+        font-size: var(--label-medium-font-size); 
+        letter-spacing: var(--label-medium-letter-spacing);
+        /* line-height: var(--label-medium-line-height);    */
+      }
+    
+    .navContainer {
+        padding: 15px 40px;
+      }
+
+    .navList img{
+        width: 41.25;
+        height: 51;
+    }
+  }
+
+/* Not main */
+  @media only screen and (max-width: 690px){
+    .navList {
+        gap: 20px;
+      }
+
+  }
+  @media only screen and (max-width: 630px){
+    .logoContainer img{
+      width: 38.25px;
+      height: 30.94px;
+    }
+
+    .navContainer {
+        padding: 15px 20px;
+      }
+
+    .navList img{
+        width: 38.25;
+        height: 30.94;
+    }
+
+    .bookButton {
+        border-radius: 8px;
+        padding: 8px;
+        gap: 8px;
+        height: 40px;
+      }
+  }
+
+/* Not main */
+/* Should be 430 */
+  @media only screen and (max-width: 570px){
+    .link{
+        font-size: var(--label-small-font-size); 
+        letter-spacing: var(--label-small-letter-spacing);
+        /* line-height: var(--label-small-line-height);    */
+      }
+    
+    .navContainer {
+        padding: 15px 20px;
+      }
+
+    .navList img{
+        width: 38.25;
+        height: 30.94;
+    }
+
+    .bookButton {
+        border-radius: 8px;
+        padding: 8px;
+        gap: 8px;
+      }
+
+      .navContainer .navList{
+        display: none;
+      }
+  }

@@ -11,7 +11,7 @@ import Booking from '../views/Booking'
 const Pages = () => {
   return (
       <>
-          <Navbar />
+          <Navbar colorState={'colored'}/>
             <Routes>
               <Route path='/' element={<Home/> } />
               <Route path='/about' element={<About/> } />
