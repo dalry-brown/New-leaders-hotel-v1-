@@ -27,7 +27,7 @@ interface PageState {
 }
 
 export const usePageStore = create<PageState>((set) => ({
-    homeSelected: true,
+    homeSelected: false,
     aboutSelected: false,
     roomsSelected: false,
     contactSelected: false,

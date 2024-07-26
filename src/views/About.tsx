@@ -1,4 +1,3 @@
-import React from 'react'
 import aboutStyle from '../styles/view-styles/about.module.css'
 import vans from '../assets/vans.png'
 import Team from '../components/about-components/Team'

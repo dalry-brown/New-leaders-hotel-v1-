@@ -13,7 +13,8 @@ interface NavbarProps {
 
 const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }> = ({ dropdownRef }) => {
   const { screenWidth, setScreenWidth } = useScreenSizeStore(); // Use the screen size store
-  
+  const { selectHome, selectAbout, selectRooms, selectContact, selectBooking } = usePageStore();
+
   // useEffect(() => {
   //   const handleResize = () => {
   //     setScreenWidth(window.innerWidth);
@@ -45,16 +46,32 @@ const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }>
         </Link>
       </ul>) :
         (<ul className={navStyle.dropDownList} ref={dropdownRef}>
-          <Link className={navStyle.dropLink} to="/">
+          <Link className={navStyle.dropLink}
+            onClick={() => {
+                selectHome();
+            }}
+            to="/">
             <li>Home</li>
           </Link>
-          <Link className={navStyle.dropLink} to="/about">
+          <Link className={navStyle.dropLink} 
+            onClick={() => {
+                selectAbout();
+            }}
+            to="/about">
             <li>About</li>
           </Link>
-          <Link className={navStyle.dropLink} to="/rooms-and-suites">
+          <Link className={navStyle.dropLink} 
+            onClick={() => {
+                selectRooms();
+            }}
+            to="/rooms-and-suites">
             <li>Rooms and Suites</li>
           </Link>
-          <Link className={navStyle.dropLink} to="/contact">
+          <Link className={navStyle.dropLink} 
+            onClick={() => {
+                selectContact();
+            }}
+            to="/contact">
             <li>Contact</li>
           </Link>
           <Link className={navStyle.dropLink} to="/login">
@@ -70,7 +87,7 @@ const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }>
   );
 }
 
-const Navbar: React.FC<NavbarProps> = ({ colorState }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const { isOpen, toggleDropdown, closeDropdown } = useDropdownStore();
   const { homeSelected, aboutSelected, roomsSelected, contactSelected, selectHome, selectAbout, selectRooms, selectContact, selectBooking } = usePageStore();
   const { setScreenWidth } = useScreenSizeStore(); // Use the screen size store
@@ -79,6 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({ colorState }) => {
   const dropdownRef = useRef<HTMLUListElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
+
     if (
       triggerRef.current && !triggerRef.current.contains(event.target as Node) &&
       dropdownRef.current && !dropdownRef.current.contains(event.target as Node)
@@ -117,14 +135,16 @@ const Navbar: React.FC<NavbarProps> = ({ colorState }) => {
   return (
     <nav
       className={navStyle.nav}
-      style={homeSelected ?
+      style={(homeSelected == false) ?
         {
-          position: 'absolute',
-          boxSizing: 'border-box',
-          width: '100%'
+          backgroundColor: '#1E1E1E',
+          position: 'relative'
         } :
         {
-        backgroundColor: colorState === 'colored' ? '#1E1E1E' : 'transparent',
+          backgroundColor: 'transparent',
+          position: 'absolute',
+          boxSizing: 'border-box',
+          width: '100%',
       }}
     >
       <div className={navStyle.navContainer}>

@@ -1,4 +1,3 @@
-import React from 'react'
 import teamStyle from '../../styles/component-styles/about-components/team.module.css'
 import member1 from '../../assets/member1.png'
 import member2 from '../../assets/member2.png'

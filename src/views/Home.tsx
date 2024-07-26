@@ -12,9 +12,17 @@ import Testimonial from "../components/home-components/Testimonial"
 import boardroom from "../assets/boardroom.png"
 import pool from "../assets/pool.png"
 import dinner from "../assets/dinner.png"
+import { usePageStore } from "../store/basicStore"
+import { useEffect } from "react"
+
 
 
 const Home = () => {
+  const { selectHome } = usePageStore()
+    
+  useEffect(() => {
+    selectHome()
+  }, [])
 
   const images = [
     roomb,

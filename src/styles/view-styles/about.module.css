@@ -42,6 +42,7 @@ h2, h3, h4, p{
 }
 
 .content h2{
+    width: 100%;
     font-size: 57px;
     font-style: normal;
     font-weight: 400;
@@ -233,7 +234,7 @@ h2, h3, h4, p{
 
 @media only screen and (max-width: 1024px){
     .aboutUsContainer{
-        padding: 30px 40px;
+        padding: 40px 30px;
         gap: 40px;
     }
 /*     
@@ -416,6 +417,7 @@ h2, h3, h4, p{
 
 @media only screen and (max-width: 720px){
     .aboutUsContainer{
+        padding: 15px 20px;
         flex-direction: column;
     }
 
@@ -453,7 +455,6 @@ h2, h3, h4, p{
 @media only screen and (max-width: 430px){
 
     .aboutUsContainer{
-        padding: 20px;
         gap: 10px;
     }
     

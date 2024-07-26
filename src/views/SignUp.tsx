@@ -1,10 +1,13 @@
 import React from 'react'
+import signUpStyle from "../styles/view-styles/signUp.module.css"
 
 const SignUp = () => {
   return (
-    <>
-      SignUp
-    </>
+    <main className="signUp">
+      <div className="signUpContainer">
+
+      </div>
+    </main>
   )
 }
 
