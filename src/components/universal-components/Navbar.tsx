@@ -14,6 +14,7 @@ interface NavbarProps {
 const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }> = ({ dropdownRef }) => {
   const { screenWidth, setScreenWidth } = useScreenSizeStore(); // Use the screen size store
   const { selectHome, selectAbout, selectRooms, selectContact, selectBooking } = usePageStore();
+  const { closeDropdown } = useDropdownStore();
 
   // useEffect(() => {
   //   const handleResize = () => {
@@ -38,10 +39,18 @@ const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }>
     <>
     {  (screenWidth > 570) ?  
       (<ul className={navStyle.dropDownList} ref={dropdownRef}>
-        <Link className={navStyle.dropLink} to="/login">
+          <Link className={navStyle.dropLink}
+                      to="/login"
+                      onClick={() => {
+                        closeDropdown();
+                    }}>
           <li>Login</li>
         </Link>
-        <Link className={navStyle.dropLink} to="/sign-up">
+          <Link className={navStyle.dropLink}
+                      to="/sign-up"
+                      onClick={() => {
+                        closeDropdown();
+                    }}>
           <li>Sign up</li>
         </Link>
       </ul>) :
@@ -74,10 +83,18 @@ const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }>
             to="/contact">
             <li>Contact</li>
           </Link>
-          <Link className={navStyle.dropLink} to="/login">
+          <Link className={navStyle.dropLink}
+                      to="/login"
+                      onClick={() => {
+                        closeDropdown();
+                    }}>
             <li>Login</li>
           </Link>
-          <Link className={navStyle.dropLink} to="/sign-up">
+          <Link className={navStyle.dropLink}
+                      to="/sign-up"
+                      onClick={() => {
+                        closeDropdown();
+                    }}>
             <li>Sign up</li>
           </Link>
         </ul>)
