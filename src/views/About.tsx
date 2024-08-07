@@ -1,8 +1,29 @@
 import aboutStyle from '../styles/view-styles/about.module.css'
 import vans from '../assets/vans.png'
 import Team from '../components/about-components/Team'
+import { usePageStore } from "../store/basicStore"
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const About = () => {
+
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1))
+      if (element) {
+        element.scrollIntoView({behavior: 'smooth'})
+      }
+    }
+  }, [location])
+
+  const { selectAbout } = usePageStore()
+    
+  useEffect(() => {
+    selectAbout()
+  }, [])
+
   return (
     <main className={aboutStyle.about}>
       <div className={aboutStyle.aboutContainer}>
@@ -65,7 +86,7 @@ const About = () => {
             </div>
           </div>
         </section>
-        <section className={aboutStyle.offer}>
+        <section id='offer' className={aboutStyle.offer}>
           <section className={aboutStyle.offerContainer}>
           <div className={aboutStyle.first}>
               <h3>What we offer</h3>

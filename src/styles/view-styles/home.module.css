@@ -90,6 +90,13 @@ p, h3{
     border: 2px solid #F3F5F6;
 }
 
+.helpline:hover{
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transition: ease-in .25s;
+    cursor: pointer;
+}
+
 .left{
     display: flex;
     align-items: center;

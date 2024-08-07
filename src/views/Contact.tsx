@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import contactStyle from '../styles/view-styles/contact.module.css';
 import { Instagram, Twitter, FacebookRounded, LinkedIn, CloseRounded, ExpandMore } from '@mui/icons-material';
+import { usePageStore } from "../store/basicStore"
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface FAQ {
   id: number;
@@ -42,6 +45,17 @@ const faqs: FAQ[] = [
 ];
 
 const Contact: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   const [openFaqs, setOpenFaqs] = useState<{ [key: number]: boolean }>({});
 
   const toggleFaq = (id: number) => {
@@ -51,12 +65,19 @@ const Contact: React.FC = () => {
     }));
   };
 
+  const { selectContact } = usePageStore()
+    
+  useEffect(() => {
+    selectContact()
+  }, [])
+
+
   return (
     <main className={contactStyle.contact}>
       <div className={contactStyle.contactContainer}>
-        <div className={contactStyle.getInTouch}>
+        <div id='contactUs' className={contactStyle.getInTouch}>
           <div className={contactStyle.getIntouchContainer}>
-            <h2>Get in touch with us</h2>
+            <h2 id='touch'>Get in touch with us</h2>
             <div className={contactStyle.contactInfo}>
               <div className={contactStyle.contactDetail}>
                 <label className={contactStyle.key} htmlFor="address">Address</label>
@@ -96,7 +117,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={contactStyle.getInTouch}>
+        <div id='faq' className={contactStyle.getInTouch}>
           <div className={contactStyle.getIntouchContainer}>
             <h2>Frequently Asked Questions</h2>
             <div className={contactStyle.faqContainer}>

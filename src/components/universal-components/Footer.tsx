@@ -3,7 +3,7 @@ import footerImg from '../../assets/footerImg.png'
 import footerStyle from "../../styles/component-styles/universal-components/footer.module.css"
 import { Instagram, Twitter, FacebookRounded, LinkedIn } from '@mui/icons-material'
 import { useScreenSizeStore } from '../../store/basicStore'; // Import the screen size store
-
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { screenWidth, setScreenWidth } = useScreenSizeStore(); // Use the screen size store
@@ -25,13 +25,13 @@ const Footer = () => {
             </section>
             <section className={footerStyle.secondSec}>
               <h3>Help & Support</h3>
-              <p>FAQ</p>
-              <p>Contact us</p>
+              <p><Link style={{textDecoration: 'none', color: 'inherit'}} to='/contact#faq'>FAQ</Link></p>
+              <p><Link style={{textDecoration: 'none', color: 'inherit'}} to='/contact#contactUs'>Contact us</Link></p>
             </section>
             <section className={footerStyle.thirdSec}>
               <h3>Product</h3>
-              <p>Services</p>
-              <p>Pricing</p>
+              <p><Link style={{textDecoration: 'none', color: 'inherit'}} to='/about#offer'>Services</Link></p>
+              <p><Link style={{textDecoration: 'none', color: 'inherit'}} to='/rooms-and-suites#roomprices'>Pricing</Link></p>
             </section>
             <section className={footerStyle.fourthSec}>
             <h3>Subscribe to our newsletter</h3>

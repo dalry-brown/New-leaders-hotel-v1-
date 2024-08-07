@@ -14,6 +14,7 @@ import pool from "../assets/pool.png"
 import dinner from "../assets/dinner.png"
 import { usePageStore } from "../store/basicStore"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 
 
@@ -25,10 +26,22 @@ const Home = () => {
   }, [])
 
   const images = [
-    roomb,
-    rooma,
-    roomc,
-    roomd
+    {
+      img: roomc,
+      path: "/rooms-and-suites#vip"
+    },
+    {
+      img: rooma,
+      path: "/rooms-and-suites#executive"
+    },
+    {
+      img: roomd,
+      path: "/rooms-and-suites#double"
+    },
+    {
+      img: roomb,
+      path: "/rooms-and-suites#single"
+    }
   ]
   
   const amenities = [
@@ -37,7 +50,7 @@ const Home = () => {
     image: boardroom,
     title: "Executive Board Room",
     content: "The Executive Board Room at New Leaders Hotel combines sophistication and functionality with state-of-the-art audiovisual technology and high-speed internet. Elegantly designed with modern furnishings, it comfortably accommodates up to [number] attendees. Dedicated support staff ensure a seamless experience for all your high-level meetings.",
-    imagePositionRight: false
+    imagePositionRight: false,
     },
     {
     id: 2,
@@ -66,6 +79,7 @@ const Home = () => {
               <h3>Discover the pinnacle of luxury and comfort. Immerse yourself in a serene haven where elegance meets exceptional service. Your unforgettable stay begins here.</h3>
             </div>
             <div className={homeStyle.helplineContainer}>
+              <Link style={{textDecoration: 'none', color: 'inherit'}} to='/contact#contactUs'>
               <div className={homeStyle.helpline}>
                 <div className={homeStyle.left}>
                   <Call style={{ fontSize: 24, color: '#F3F5F6'}}/>
@@ -74,7 +88,8 @@ const Home = () => {
                   <p>Helpline</p>
                   <p> +233   24   849   8755</p>
                 </div>
-              </div>
+                </div>
+              </Link>
             </div>
           </section>
         </section>
@@ -109,7 +124,7 @@ const Home = () => {
               <h2>Rooms & Suites</h2>
               <Carousel images={images} />
               <div className={homeStyle.viewAll}>
-                      <button>View all rooms</button>
+              <Link style={{textDecoration: 'none', color: 'inherit'}} to='/rooms-and-suites'><button>View all rooms</button></Link>
               </div>
             </section>
           </section>

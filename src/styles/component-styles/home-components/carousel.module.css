@@ -131,15 +131,20 @@
 }
 
 .button {
+  display: none;
   background: none;
   background-color: var(--secondary-color);
   border: none;
+  margin: 0;
+  padding: 0 1px 0 5px;
   font-size: 2rem;
   cursor: pointer;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
+  height: 50px;
+  color: #F0F0F7;
 }
 
 .button:hover{
@@ -239,4 +244,10 @@
     /* display: block; */
   }
   
+}
+
+@media only screen and (max-width: 490px){
+  .button{
+    display: block;
+  }
 }

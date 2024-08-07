@@ -57,28 +57,32 @@ const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }>
         (<ul className={navStyle.dropDownList} ref={dropdownRef}>
           <Link className={navStyle.dropLink}
             onClick={() => {
-                selectHome();
+              selectHome();
+              closeDropdown();
             }}
             to="/">
             <li>Home</li>
           </Link>
           <Link className={navStyle.dropLink} 
             onClick={() => {
-                selectAbout();
+              selectAbout();
+              closeDropdown();
             }}
             to="/about">
             <li>About</li>
           </Link>
           <Link className={navStyle.dropLink} 
             onClick={() => {
-                selectRooms();
+              selectRooms();
+              closeDropdown();
             }}
             to="/rooms-and-suites">
             <li>Rooms and Suites</li>
           </Link>
           <Link className={navStyle.dropLink} 
             onClick={() => {
-                selectContact();
+              selectContact();
+              closeDropdown();
             }}
             to="/contact">
             <li>Contact</li>
@@ -86,6 +90,7 @@ const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }>
           <Link className={navStyle.dropLink}
                       to="/login"
                       onClick={() => {
+                        closeDropdown();
                         closeDropdown();
                     }}>
             <li>Login</li>

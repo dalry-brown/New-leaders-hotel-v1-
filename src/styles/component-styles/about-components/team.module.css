@@ -15,7 +15,7 @@
   color: var(--body-text-color);
   font-family: var(--default-font-family);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 16px;
   /* padding: 16px; */
 }
@@ -56,6 +56,23 @@
 }
 
 @media (max-width: 1024px) {
+
+  .teamContainer{
+    /* padding: 80px 60px; */
+    /* display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 60px; */
+    /* color: var(--body-text-color);
+    font-family: var(--default-font-family);
+    display: grid; */
+
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    /* gap: 16px; */
+    /* padding: 16px; */
+  }
+
   .teamMember {
     max-width: 249.75px;
     max-height: 292.25px;
@@ -79,6 +96,7 @@
 }
 
 @media (max-width: 600px) {
+
   .teamContainer{
     padding: 20px;
     gap: 15px;
@@ -115,6 +133,21 @@
     justify-items: center;
     padding: 20px;
     gap: 15px;
+  }
+
+  .teamContainer{
+    /* padding: 80px 60px; */
+    /* display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 60px; */
+    /* color: var(--body-text-color);
+    font-family: var(--default-font-family);
+    display: grid; */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    /* gap: 16px; */
+    /* padding: 16px; */
   }
 
   /* .teamMember {

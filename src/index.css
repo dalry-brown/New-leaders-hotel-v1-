@@ -93,3 +93,6 @@ body {
   background-color: var(--default-background-color);
 }
 
+.react-datepicker__current-month{
+  width: 100%;
+}

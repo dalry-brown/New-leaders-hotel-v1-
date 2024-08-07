@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import styles from '../../styles/component-styles/home-components/carousel.module.css';
+import { Link } from 'react-router-dom';
 
-interface CarouselProps {
-  images: string[];
-}
 
-const Carousel: React.FC<CarouselProps> = ({ images }) => {
+const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -24,13 +22,13 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       <button className={styles.button} onClick={handlePrev}>‹</button>
       <div className={styles.carouselImages}>
         <div className={`${styles.carouselImageSide} ${styles.left}`}>
-          <img src={images[leftIndex]} alt="Left" />
+          <img onClick={handlePrev} src={images[leftIndex].img} alt="Left" />
         </div>
         <div className={`${styles.carouselImageMiddle} ${styles.center}`}>
-          <img src={images[currentIndex]} alt="Center" />
+          <Link to={images[currentIndex].path}><img src={images[currentIndex].img} alt="Center" /></Link>
         </div>
         <div className={`${styles.carouselImageSide} ${styles.right}`}>
-          <img src={images[rightIndex]} alt="Right" />
+          <img onClick={handleNext} src={images[rightIndex].img} alt="Right" />
         </div>
       </div>
       <button className={styles.button} onClick={handleNext}>›</button>

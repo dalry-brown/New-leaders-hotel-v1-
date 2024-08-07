@@ -5,7 +5,7 @@
     box-sizing: border-box;
     font-family: var(--default-font-family);
     background-color: #1E1E1E;
-}
+  }
   
   .navContainer {
     display: flex;
@@ -32,7 +32,6 @@
     text-decoration: none;
     margin: 0;
     padding: 12px;
-    text-align: start;
   }
 
   .dropLink:hover{

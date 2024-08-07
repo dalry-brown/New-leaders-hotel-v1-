@@ -15,7 +15,7 @@ const Team = () => {
             id: 1,
             image: member1,
             name: "Joseph Appiah",
-            role: "Chief Technology Officer"
+            role: "CTO"
         },
         {
             id: 2,
