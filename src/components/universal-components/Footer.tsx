@@ -1,4 +1,3 @@
-import React from 'react'
 import footerImg from '../../assets/footerImg.png'
 import footerStyle from "../../styles/component-styles/universal-components/footer.module.css"
 import { Instagram, Twitter, FacebookRounded, LinkedIn } from '@mui/icons-material'
@@ -6,7 +5,7 @@ import { useScreenSizeStore } from '../../store/basicStore'; // Import the scree
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const { screenWidth, setScreenWidth } = useScreenSizeStore(); // Use the screen size store
+  const { screenWidth } = useScreenSizeStore(); // Use the screen size store
   
   return (
     <footer className={footerStyle.footer}>

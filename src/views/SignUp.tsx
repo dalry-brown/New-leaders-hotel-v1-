@@ -1,9 +1,7 @@
-import React from 'react'
 import signUpStyle from "../styles/view-styles/signUp.module.css"
 import loginImg from "../assets/loginImg.png"
 import google from "../assets/google.png"
 import { Link } from 'react-router-dom'
-import { KeyboardReturn } from '@mui/icons-material'
 import { ArrowBackRounded } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 

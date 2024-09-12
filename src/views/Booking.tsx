@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';import bookingStyle from '../styles/view-styles/booking.module.css'
+import { useState, useRef, useEffect } from 'react';import bookingStyle from '../styles/view-styles/booking.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowBackRounded, ArrowForwardRounded } from '@mui/icons-material'
 import { useRoomSettingsStore, useScreenSizeStore } from '../store/basicStore'
@@ -10,8 +10,8 @@ import MyDatePicker from '../components/universal-components/MyDatePicker';
 import {useBookingState, useBookingStyleChanges} from '../store/bookingStore'
 
 const HaveLogin = () => {
-  const { bookingSignedIn, completeSignIn } = useBookingStatus();
-  const { loggedIn, login } = useAuth();
+  // const { bookingSignedIn, completeSignIn } = useBookingStatus();
+  // const { loggedIn, login } = useAuth();
   const { signInStateObj } = useBookingState();
 
   return(
@@ -90,24 +90,24 @@ const HaveLogin = () => {
 
 const ConfirmBooking = () => {
   const { tempRoom, setTempRoom } = useRoomSettingsStore();
-  const { bookingConfirmedDetail, completeBooking, completeSignIn } = useBookingStatus();
+  const { completeBooking, completeSignIn } = useBookingStatus();
   const [isCheckInOpen, setIsCheckInOpen] = useState(false);
   const [isCheckOutOpen, setIsCheckOutOpen] = useState(false);
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [name, setName] = useState(null);
-  const checkInRef = useRef(null);
-  const checkOutRef = useRef(null);
-  const datePickerRef = useRef(null);
+  const [checkInDate, setCheckInDate] = useState<Date | null>(null);
+  const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
+  const [email, setEmail] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const checkInRef = useRef<HTMLButtonElement | null>(null);
+  const checkOutRef = useRef<HTMLButtonElement | null>(null);
+  const datePickerRef = useRef<HTMLDivElement | null>(null);
 
-  const handleClickOutside = (event) => {
-    if (checkInRef.current && !checkInRef.current.contains(event.target) &&
-        datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (checkInRef.current && !checkInRef.current.contains(event.target as Node) &&
+        datePickerRef.current && !datePickerRef.current.contains(event.target as Node)) {
       setIsCheckInOpen(false);
     }
-    if (checkOutRef.current && !checkOutRef.current.contains(event.target) &&
-        datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+    if (checkOutRef.current && !checkOutRef.current.contains(event.target as Node) &&
+        datePickerRef.current && !datePickerRef.current.contains(event.target as Node)) {
       setIsCheckOutOpen(false);
     }
   };
@@ -119,13 +119,22 @@ const ConfirmBooking = () => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   setTempRoom({
+  //     ...tempRoom,
+  //     checkIn: checkInDate,
+  //     checkOut: checkOutDate
+  //   });
+  // }, [checkInDate, checkOutDate]);
+
   useEffect(() => {
-    setTempRoom({
-      ...tempRoom,
+    setTempRoom((prevTempRoom) => ({
+      ...prevTempRoom,
       checkIn: checkInDate,
       checkOut: checkOutDate
-    });
+    }));
   }, [checkInDate, checkOutDate]);
+  
 
   const handleConfirmBooking = () => {
     // console.log(tempRoom);
@@ -219,7 +228,7 @@ const ConfirmBooking = () => {
             <label htmlFor="numberOfRooms">No. Rooms:</label>
             <input
               type="number"
-              value={tempRoom ? tempRoom.numberOfPeople : ''}
+              value={tempRoom?.number ?? ''}
               id='numberOfRooms'
               autoComplete='off'
 
@@ -385,7 +394,7 @@ const PaymentDecision = () => {
 }
 
 const Booking = () => {
-  const { bookingSignedIn, bookingConfirmedDetail, bookingPaymentDecisionMade, completeSignIn } = useBookingStatus();
+  const { bookingSignedIn, bookingConfirmedDetail, bookingPaymentDecisionMade } = useBookingStatus();
   const { setSignInStateObj, setBookingStateObj, setPaymentStateObj } = useBookingState();
   const { defaultSignInState, completedSignInState, defaultBookingState, activeBookingState, completedBookingState, defaultPaymentState, activePaymentState, completedPaymentState } = useBookingStyleChanges();
   const { loggedIn } = useAuth();

@@ -186,7 +186,8 @@ const Contact: React.FC = () => {
               </form>
             </div>
             <div className={contactStyle.map}>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.1266093670138!2d-0.3525870249664423!3d5.694840694286925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa11b53b414db%3A0xcb42bf9a39a04b09!2sNew%20Leaders%20Hotel!5e0!3m2!1sen!2sgh!4v1721956192908!5m2!1sen!2sgh" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.1266093670138!2d-0.3525870249664423!3d5.694840694286925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa11b53b414db%3A0xcb42bf9a39a04b09!2sNew%20Leaders%20Hotel!5e0!3m2!1sen!2sgh!4v1721956192908!5m2!1sen!2sgh" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.1266093670138!2d-0.3525870249664423!3d5.694840694286925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa11b53b414db%3A0xcb42bf9a39a04b09!2sNew%20Leaders%20Hotel!5e0!3m2!1sen!2sgh!4v1721956192908!5m2!1sen!2sgh" loading="lazy"></iframe>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import signUpStyle from "../styles/view-styles/signUp.module.css";
 import loginImg from "../assets/loginImg.png";
 import google from "../assets/google.png";
@@ -11,8 +10,8 @@ import { ArrowBackRounded } from '@mui/icons-material'
 
 const Login = () => {
   const { login } = useAuth();
-  const { completeSignIn, bookingSignedIn } = useBookingStatus();
-  const { defaultSignInState, completedSignInState, defaultBookingState, activeBookingState, completedBookingState, defaultPaymentState, activePaymentState, completedPaymentState } = useBookingStyleChanges();
+  const { completeSignIn } = useBookingStatus();
+  const { completedSignInState, activeBookingState, defaultPaymentState } = useBookingStyleChanges();
   const { setSignInStateObj, setBookingStateObj, setPaymentStateObj } = useBookingState();
 
   const navigate = useNavigate();

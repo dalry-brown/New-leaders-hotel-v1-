@@ -1,6 +1,6 @@
 import homeStyle from "../styles/view-styles/home.module.css"
 import Call from "@mui/icons-material/Call"
-import ceoAvatar from "../assets/home avatar.png"
+// import ceoAvatar from "../assets/home avatar.png"
 import welcomeImg from '../assets/welcome picture.png'
 import rooma from '../assets/rooma.png'
 import roomb from '../assets/roomb.png'
@@ -25,7 +25,12 @@ const Home = () => {
     selectHome()
   }, [])
 
-  const images = [
+  interface ImageType{
+    img: string,
+    path: string
+  }
+
+  const images:ImageType[] = [
     {
       img: roomc,
       path: "/rooms-and-suites#vip"

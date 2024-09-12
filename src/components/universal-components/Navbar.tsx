@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import MoreVert from '@mui/icons-material/MoreVert';
 import { useDropdownStore, usePageStore } from '../../store/basicStore';
@@ -12,8 +12,8 @@ interface NavbarProps {
 }
 
 const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }> = ({ dropdownRef }) => {
-  const { screenWidth, setScreenWidth } = useScreenSizeStore(); // Use the screen size store
-  const { selectHome, selectAbout, selectRooms, selectContact, selectBooking } = usePageStore();
+  const { screenWidth } = useScreenSizeStore(); // Use the screen size store
+  const { selectHome, selectAbout, selectRooms, selectContact } = usePageStore();
   const { closeDropdown } = useDropdownStore();
 
   // useEffect(() => {
@@ -111,7 +111,7 @@ const DropDownMenu: React.FC<{ dropdownRef: React.RefObject<HTMLUListElement> }>
 
 const Navbar: React.FC<NavbarProps> = () => {
   const { isOpen, toggleDropdown, closeDropdown } = useDropdownStore();
-  const { homeSelected, aboutSelected, roomsSelected, contactSelected, selectHome, selectAbout, selectRooms, selectContact, selectBooking } = usePageStore();
+  const { homeSelected, aboutSelected, roomsSelected, contactSelected, selectHome, selectAbout, selectRooms, selectContact } = usePageStore();
   const { setScreenWidth } = useScreenSizeStore(); // Use the screen size store
   const [navBackground, setNavBackground] = useState<string>('transparent');
   const [navHeight, setNavHeight] = useState<string>('0');

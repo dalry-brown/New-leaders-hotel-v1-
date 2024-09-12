@@ -197,7 +197,7 @@ interface Room {
   checkIn: number|null;
   checkOut: number|null;
   number: number;
-  index: Number;
+  index: number;
 }
 
 interface RoomState {
@@ -308,11 +308,59 @@ export const useRoomStore = create<RoomState>(
   };
 });
 
-export const useTempRoom = create((set) =>( {
+// export const useTempRoom = create((set) =>( {
 
-}))
+// }))
 
-export const useRoomSettingsStore = create((set) => ({
+// export const useRoomSettingsStore = create((set) => ({
+//   roomType: '',
+//   tempRoom: {
+//     id: '',
+//     roomType: null,
+//     checkIn: null,
+//     checkOut: null,
+//     number: null,
+//   },
+//   setTempRoom: (room) => set({ tempRoom: room }),
+//   setVipRoomType: () => set({roomType: 'VIP Lounge'}),
+//   setExecutiveRoomType: () => set({roomType: 'Executive Lounge'}),
+//   setDoubleRoomType: () => set({roomType: 'Standard Double'}),
+//   setSingleRoomType: () => set({ roomType: 'Single Occupancy' }),
+//   numberOfPeople: 0,
+//   setNumberOfPeople: (newNumber) => set({numberOfPeople: newNumber}),
+//   increment: () => set(state => ({ numberOfPeople: state.numberOfPeople + 1 })),
+//   decrement: () => set(state => ({ numberOfPeople: state.numberOfPeople - 1 }))
+//   // increment: () => set((state))
+//   // increment: () => set((state: { numberOfPeople: number; }) => ({numberOfPeople: state.numberOfPeople + 1})),
+// //   decrement: set((state: { numberOfPeople: number; }) => ({numberOfPeople: state.numberOfPeople - 1}))
+//   // 
+// }))
+
+interface TempRoom {
+  id: string | null;
+  roomType: string | null;
+  checkIn: Date | null;
+  checkOut: Date | null;
+  number: number | null;
+}
+
+interface RoomSettingsStore {
+  roomType: string;
+  tempRoom: TempRoom;
+  // setTempRoom: (room: TempRoom) => void;
+  setTempRoom: (updater: (prev: TempRoom) => TempRoom) => void;
+  setVipRoomType: () => void;
+  setExecutiveRoomType: () => void;
+  setDoubleRoomType: () => void;
+  setSingleRoomType: () => void;
+  numberOfPeople: number;
+  setNumberOfPeople: (newNumber: number) => void;
+  increment: () => void;
+  decrement: () => void;
+}
+
+// Create the Zustand store with typed state and actions
+export const useRoomSettingsStore = create<RoomSettingsStore>((set) => ({
   roomType: '',
   tempRoom: {
     id: '',
@@ -321,18 +369,14 @@ export const useRoomSettingsStore = create((set) => ({
     checkOut: null,
     number: null,
   },
-  setTempRoom: (room) => set({ tempRoom: room }),
-  setVipRoomType: () => set({roomType: 'VIP Lounge'}),
-  setExecutiveRoomType: () => set({roomType: 'Executive Lounge'}),
-  setDoubleRoomType: () => set({roomType: 'Standard Double'}),
+  // setTempRoom: (room: TempRoom) => set({ tempRoom: room }),
+  setTempRoom: (updater) => set((state) => ({ tempRoom: updater(state.tempRoom) })),
+  setVipRoomType: () => set({ roomType: 'VIP Lounge' }),
+  setExecutiveRoomType: () => set({ roomType: 'Executive Lounge' }),
+  setDoubleRoomType: () => set({ roomType: 'Standard Double' }),
   setSingleRoomType: () => set({ roomType: 'Single Occupancy' }),
   numberOfPeople: 0,
-  setNumberOfPeople: (newNumber) => set({numberOfPeople: newNumber}),
-  increment: () => set(state => ({ numberOfPeople: state.numberOfPeople + 1 })),
-  decrement: () => set(state => ({ numberOfPeople: state.numberOfPeople - 1 }))
-  // increment: () => set((state))
-  // increment: () => set((state: { numberOfPeople: number; }) => ({numberOfPeople: state.numberOfPeople + 1})),
-//   decrement: set((state: { numberOfPeople: number; }) => ({numberOfPeople: state.numberOfPeople - 1}))
-  // 
-}))
-
+  setNumberOfPeople: (newNumber: number) => set({ numberOfPeople: newNumber }),
+  increment: () => set((state) => ({ numberOfPeople: state.numberOfPeople + 1 })),
+  decrement: () => set((state) => ({ numberOfPeople: state.numberOfPeople - 1 })),
+}));

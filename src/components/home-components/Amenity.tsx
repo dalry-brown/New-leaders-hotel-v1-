@@ -15,7 +15,7 @@ interface AmenityProps {
 const Amenity: React.FC<AmenityProps> = ({ amenities }) => {
   const { screenWidth } = useScreenSizeStore();
 
-  const layoutStyle = {
+  const layoutStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: screenWidth > 599
       ? amenities.imagePositionRight

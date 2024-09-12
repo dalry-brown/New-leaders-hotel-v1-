@@ -1,17 +1,20 @@
 import roomStyle from "../styles/view-styles/rooms-and-suites.module.css";
 import { KeyboardArrowDown, Add, Remove } from '@mui/icons-material';
-import { usePageStore, useScreenSizeStore, useRoomStore, useDropdownStore, useRoomSettingsStore, useDateDropdownStore } from '../store/basicStore';
+import { usePageStore, useScreenSizeStore, useRoomStore, useDropdownStore, useRoomSettingsStore } from '../store/basicStore';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import MyDatePicker from "../components/universal-components/MyDatePicker";
 
+// Type for DropDownMenu props
+interface DropDownMenuProps {
+  dropdownRef: React.RefObject<HTMLUListElement>;
+}
 
-const DropDownMenu = ({ dropdownRef }) => {
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ dropdownRef }) => {
   const { setVipRoom, setExecutiveRoom, setDoubleRoom, setSingleRoom, resetRooms } = useRoomStore();
   const { closeDropdown } = useDropdownStore();
-  const { setVipRoomType, setExecutiveRoomType, setTempRoom, tempRoom } = useRoomSettingsStore();
+  const { setVipRoomType, setExecutiveRoomType } = useRoomSettingsStore();
 
   return (
     <ul className={roomStyle.updatedDropLink} ref={dropdownRef}>
@@ -34,7 +37,7 @@ const DropDownMenu = ({ dropdownRef }) => {
   );
 };
 
-const RoomsAndSuites = () => {
+const RoomsAndSuites: React.FC = () => {
   const location = useLocation();
   const { uniqueRooms, rooms } = useRoomStore();
   const { selectRooms } = usePageStore();
@@ -42,17 +45,16 @@ const RoomsAndSuites = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCheckInOpen, setIsCheckInOpen] = useState(false);
   const [isCheckOutOpen, setIsCheckOutOpen] = useState(false);
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
-  const dropdownRef = useRef(null);
-  const buttonRef = useRef(null);
-  const checkInRef = useRef(null);
-  const checkOutRef = useRef(null);
-  const datePickerRef = useRef(null);
-  const { tempRoom, setTempRoom, roomType, increment, decrement, setNumberOfPeople, numberOfPeople } = useRoomSettingsStore();
-  // const [tempRoom, setTempRoom] = useState({});
+  const [checkInDate, setCheckInDate] = useState<Date | null>(null);
+  const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const checkInRef = useRef<HTMLButtonElement>(null);
+  const checkOutRef = useRef<HTMLButtonElement>(null);
+  const datePickerRef = useRef<HTMLDivElement>(null);
+  const { setTempRoom, roomType, setNumberOfPeople } = useRoomSettingsStore();
   const navigate = useNavigate();
-  const [count, setCount] = useState({
+  const [count, setCount] = useState<Record<string, number>>({
     count1: 0,
     count2: 0,
     count3: 0,
@@ -60,17 +62,17 @@ const RoomsAndSuites = () => {
   });
   const keys = Object.keys(count);
 
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target) &&
-      buttonRef.current && !buttonRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
+      buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
       setIsDropdownOpen(false);
     }
-    if (checkInRef.current && !checkInRef.current.contains(event.target) &&
-      datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+    if (checkInRef.current && !checkInRef.current.contains(event.target as Node) &&
+      datePickerRef.current && !datePickerRef.current.contains(event.target as Node)) {
       setIsCheckInOpen(false);
     }
-    if (checkOutRef.current && !checkOutRef.current.contains(event.target) &&
-      datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+    if (checkOutRef.current && !checkOutRef.current.contains(event.target as Node) &&
+      datePickerRef.current && !datePickerRef.current.contains(event.target as Node)) {
       setIsCheckOutOpen(false);
     }
   };
@@ -82,25 +84,49 @@ const RoomsAndSuites = () => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   if (roomType) {
+  //     for (const room of rooms) {
+  //       if (room.roomType.accType === roomType && room.checkIn === null) {
+  //         setTempRoom(room);
+  //         break;
+  //       }
+  //     }
+  //   }
+  // }, [roomType, rooms, setTempRoom]);
   useEffect(() => {
     if (roomType) {
       for (const room of rooms) {
         if (room.roomType.accType === roomType && room.checkIn === null) {
-          setTempRoom(room);
+          setTempRoom((prev) => ({
+            ...prev,
+            id: room.id.toString(), // Ensure id is a string
+            roomType: room.roomType.accType,
+            checkIn: room.checkIn ? new Date(room.checkIn) : null, // Convert to Date if necessary
+            checkOut: room.checkOut ? new Date(room.checkOut) : null, // Convert to Date if necessary
+            number: room.number
+          }));
           break;
         }
       }
     }
   }, [roomType, rooms, setTempRoom]);
+  
+  
+
+
+
 
   useEffect(() => {
-    setTempRoom({
-      ...tempRoom,
+    setTempRoom(prev => ({
+      ...prev,
       checkIn: checkInDate,
       checkOut: checkOutDate
-    });
-  }, [checkInDate, checkOutDate]);
-
+    }));
+  }, [checkInDate, checkOutDate, setTempRoom]);
+  
+  
+  
   useEffect(() => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
@@ -114,7 +140,7 @@ const RoomsAndSuites = () => {
     selectRooms();
   }, [selectRooms]);
 
-  const handleCountChange = (index, delta) => {
+  const handleCountChange = (index: number, delta: number) => {
     const key = keys[index];
     setCount((prevCount) => ({
       ...prevCount,
@@ -122,8 +148,7 @@ const RoomsAndSuites = () => {
     }));
   };
 
-  const handleBook = (type) => {
-    
+  const handleBook = (type: string) => {
     let occupantsCount = 0;
     switch (type) {
       case "VIP Lounge":
@@ -132,38 +157,34 @@ const RoomsAndSuites = () => {
         break;
       case "Executive Lounge":
         occupantsCount = count.count2;
-        console.log(count);
-        
-        console.log(occupantsCount);
-        
         setNumberOfPeople(79);
         break;
       case "Single Occupancy":
         occupantsCount = count.count3;
         setNumberOfPeople(count.count3);
-        console.log(count); 
         break;
       case "Standard Double":
         occupantsCount = count.count4;
         setNumberOfPeople(count.count4);
-        console.log(occupantsCount);
-
         break;
     }
     const selectedRoom = rooms.find(room => room.roomType.accType === type && room.checkIn === null);
     if (selectedRoom) {
-      setTempRoom({...selectedRoom, checkIn: checkInDate, checkOut: checkOutDate, number: occupantsCount});
-      
+      setTempRoom((prev) => ({
+        ...prev,
+        id: selectedRoom.id.toString(), // Ensure `id` is a string
+        roomType: selectedRoom.roomType as unknown as string, // Ensure it matches the type expected in TempRoom
+        checkIn: checkInDate, // Check-in should be a Date or null
+        checkOut: checkOutDate, // Check-out should be a Date or null
+        number: occupantsCount // Number should be a number or null
+      }));
     } else {
       console.log("No available room of type:", type);
     }
-    occupantsCount = 0;
-
-    navigate('/booking')
+    
+    navigate('/booking');
+    
   };
-
-  // console.log(tempRoom);
-  
 
   return (
     <main className={roomStyle.roomsAndSuites}>
@@ -224,7 +245,7 @@ const RoomsAndSuites = () => {
           </div>
         </header>
         <div id="roomprices" className={roomStyle.roomsContainer}>
-          {uniqueRooms.map((room, index) => {
+          {uniqueRooms.map((room) => {
             const key = keys[room.index];
             const currentCount = count[key] || 0;
 
