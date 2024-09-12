@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import MoreVert from '@mui/icons-material/MoreVert';
 import { useDropdownStore, usePageStore } from '../../store/basicStore';
 import { useScreenSizeStore } from '../../store/basicStore'; // Import the screen size store
 import navStyle from '../../styles/component-styles/universal-components/navbar.module.css';
-import logo from '../../assets/logo 2.png';
+import logo from '../../assets/logo.jpg';
 
 interface NavbarProps {
   colorState: string;
@@ -113,6 +113,8 @@ const Navbar: React.FC<NavbarProps> = () => {
   const { isOpen, toggleDropdown, closeDropdown } = useDropdownStore();
   const { homeSelected, aboutSelected, roomsSelected, contactSelected, selectHome, selectAbout, selectRooms, selectContact, selectBooking } = usePageStore();
   const { setScreenWidth } = useScreenSizeStore(); // Use the screen size store
+  const [navBackground, setNavBackground] = useState<string>('transparent');
+  const [navHeight, setNavHeight] = useState<string>('0');
 
   const triggerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
@@ -126,7 +128,6 @@ const Navbar: React.FC<NavbarProps> = () => {
       closeDropdown();
     }
   };
-
   useEffect(() => {
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -154,24 +155,42 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
   }, [setScreenWidth]);
 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setNavBackground('#1E1E1E'); // Change to black
+        setNavHeight('fit-content')
+      } else {
+        setNavBackground('transparent'); // Reset to transparent
+        setNavHeight('0')
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <nav
       className={navStyle.nav}
       style={(homeSelected == false) ?
         {
           backgroundColor: '#1E1E1E',
-          position: 'relative'
+          position: 'sticky' 
         } :
         {
-          backgroundColor: 'transparent',
-          position: 'absolute',
-          boxSizing: 'border-box',
-          width: '100%',
+          backgroundColor: navBackground,
+          position: 'sticky',
+          height: navHeight
       }}
     >
       <div className={navStyle.navContainer}>
         <section className={navStyle.logoContainer}>
-          <img src={logo} alt="New Leaders Hotel logo" />
+          <Link to="/"><img src={logo} alt="New Leaders Hotel logo" /></Link>
         </section>
         <ul className={navStyle.navList}>
           <li>
@@ -224,14 +243,14 @@ const Navbar: React.FC<NavbarProps> = () => {
           </li>
         </ul>
         <section className={navStyle.rightContainer}>
+        <Link className={navStyle.btnLink} to="/booking">
           <button className={navStyle.bookButton}>
-            <Link className={navStyle.link} to="/booking">
               Book now
-            </Link>
             <div className={navStyle.icon}>
               <NorthEastIcon style={{ color: '#F3F5F6', fontSize: 15 }} />
             </div>
           </button>
+          </Link>
           <menu className={navStyle.menu} onClick={toggleDropdown} ref={triggerRef}>
             <MoreVert style={{ color: '#F3F5F6', fontSize: 24 }} />
           </menu>

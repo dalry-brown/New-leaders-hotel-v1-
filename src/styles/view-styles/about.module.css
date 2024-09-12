@@ -42,9 +42,10 @@ h2, h3, h4, p{
 }
 
 .content h2{
+    font-family: "Playfair Dispaly" !important;
     width: 100%;
     font-size: 57px;
-    font-style: normal;
+    /* font-style: normal; */
     font-weight: 400;
     letter-spacing: -0.25px;
     color: var(--tetiary-color);
@@ -279,7 +280,7 @@ h2, h3, h4, p{
         line-height: var(--label-medium-line-height);
     }
 
-    p{
+    .about p{
         font-size: var(--body-medium-font-size); 
         letter-spacing: var(--body-medium-letter-spacing);
         line-height: var(--body-medium-line-height); 
@@ -490,7 +491,7 @@ h2, h3, h4, p{
         line-height: var(--body-small-line-height);
     }
 
-    p{
+    .about p{
         font-size: var(--body-small-font-size); 
         letter-spacing: var(--body-small-letter-spacing);
         line-height: var(--body-small-line-height);

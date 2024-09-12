@@ -23,7 +23,7 @@ const Testimonial: React.FC = () => {
         numberOfStars: 4,
         content: "Staying at New Leaders Hotel was a delightful experience. The rooms were beautifully decorated, and the dining options were impressive. The staff were friendly and accommodating, making sure we had everything we needed. The only downside was the pool area, which was a bit crowded during our stay. Overall, it was a wonderful stay, and we would definitely recommend this hotel to others!",
         nameOfPerson: "Mark Bruce",
-        about: "Executive Director Forestry Commission"
+        about: "Executive Director"
         },
         {
         id: 3,

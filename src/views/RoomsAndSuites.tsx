@@ -2,36 +2,23 @@ import roomStyle from "../styles/view-styles/rooms-and-suites.module.css";
 import { KeyboardArrowDown, Add, Remove } from '@mui/icons-material';
 import { usePageStore, useScreenSizeStore, useRoomStore, useDropdownStore, useRoomSettingsStore, useDateDropdownStore } from '../store/basicStore';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import MyDatePicker from "../components/universal-components/MyDatePicker";
 
-const MyDatePicker = ({ selectedDate, setSelectedDate, excludedDates }) => {
-  return (
-    <div>
-      <DatePicker
-        selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
-        dateFormat='yyyy-MM-dd'
-        inline
-        minDate={(excludedDates.length !== 0) ? excludedDates[0] : new Date()}
-        excludeDates={excludedDates}
-      />
-    </div>
-  );
-};
 
 const DropDownMenu = ({ dropdownRef }) => {
   const { setVipRoom, setExecutiveRoom, setDoubleRoom, setSingleRoom, resetRooms } = useRoomStore();
   const { closeDropdown } = useDropdownStore();
-  const { setVipRoomType } = useRoomSettingsStore();
+  const { setVipRoomType, setExecutiveRoomType, setTempRoom, tempRoom } = useRoomSettingsStore();
 
   return (
     <ul className={roomStyle.updatedDropLink} ref={dropdownRef}>
       <Link className={roomStyle.dropLink} onClick={() => { setVipRoom(); closeDropdown(); setVipRoomType()}} to="#">
         <li>VIP Lounge</li>
       </Link>
-      <Link className={roomStyle.dropLink} onClick={() => { setExecutiveRoom(); closeDropdown(); }} to="#">
+      <Link className={roomStyle.dropLink} onClick={() => { setExecutiveRoom(); closeDropdown(); setExecutiveRoomType() }} to="#">
         <li>Executive Lounge</li>
       </Link>
       <Link className={roomStyle.dropLink} onClick={() => { setDoubleRoom(); closeDropdown(); }} to="#">
@@ -62,8 +49,9 @@ const RoomsAndSuites = () => {
   const checkInRef = useRef(null);
   const checkOutRef = useRef(null);
   const datePickerRef = useRef(null);
-  const { roomType, increment, decrement, setNumberOfPeople, numberOfPeople } = useRoomSettingsStore();
-  const [tempRoom, setTempRoom] = useState({});
+  const { tempRoom, setTempRoom, roomType, increment, decrement, setNumberOfPeople, numberOfPeople } = useRoomSettingsStore();
+  // const [tempRoom, setTempRoom] = useState({});
+  const navigate = useNavigate();
   const [count, setCount] = useState({
     count1: 0,
     count2: 0,
@@ -135,6 +123,7 @@ const RoomsAndSuites = () => {
   };
 
   const handleBook = (type) => {
+    
     let occupantsCount = 0;
     switch (type) {
       case "VIP Lounge":
@@ -143,15 +132,22 @@ const RoomsAndSuites = () => {
         break;
       case "Executive Lounge":
         occupantsCount = count.count2;
-        setNumberOfPeople(count.count2);
+        console.log(count);
+        
+        console.log(occupantsCount);
+        
+        setNumberOfPeople(79);
         break;
       case "Single Occupancy":
         occupantsCount = count.count3;
         setNumberOfPeople(count.count3);
+        console.log(count); 
         break;
       case "Standard Double":
         occupantsCount = count.count4;
         setNumberOfPeople(count.count4);
+        console.log(occupantsCount);
+
         break;
     }
     const selectedRoom = rooms.find(room => room.roomType.accType === type && room.checkIn === null);
@@ -162,9 +158,11 @@ const RoomsAndSuites = () => {
       console.log("No available room of type:", type);
     }
     occupantsCount = 0;
+
+    navigate('/booking')
   };
 
-  console.log(tempRoom);
+  // console.log(tempRoom);
   
 
   return (
@@ -227,7 +225,7 @@ const RoomsAndSuites = () => {
         </header>
         <div id="roomprices" className={roomStyle.roomsContainer}>
           {uniqueRooms.map((room, index) => {
-            const key = keys[index];
+            const key = keys[room.index];
             const currentCount = count[key] || 0;
 
             return (
@@ -268,14 +266,14 @@ const RoomsAndSuites = () => {
                     </div>
                     <div className={roomStyle.btns}>
                       <div className={roomStyle.addRoom}>
-                        <button onClick={() => handleCountChange(index, 1)}>
+                        <button onClick={() => handleCountChange(room.index, 1)}>
                           <Add style={{ backgroundColor: '#F3F5F6', color: '#3B0908' }} />
                         </button>
                         <button style={{ backgroundColor: '#F3F5F6', color: '#3B0908', outline: 'none' }}>
                           {currentCount}
                         </button>
                         <button
-                          onClick={() => handleCountChange(index, -1)}
+                          onClick={() => handleCountChange(room.index, -1)}
                           disabled={currentCount === 0}
                         >
                           <Remove style={{ backgroundColor: '#F3F5F6', color: '#3B0908' }} />

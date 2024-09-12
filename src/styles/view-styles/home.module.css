@@ -7,7 +7,7 @@
     font-size: var(--body-large-font-size); 
     letter-spacing: var(--body-large-letter-spacing);
 }
-
+/* 322f24 */
 .homeContainer{
     padding: 0;
 }
@@ -19,22 +19,27 @@ p, h3{
 .hero{
     /* height: 795px; */
     background-image: url('../../assets/reception.jpg');
+    background-color: #322F24;
     background-size: cover;
 }
 
 .heroContainer{
     padding: 168.4px 60px 80px 60px;
     /* height: 795px; */
+    height: 80vh;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.heroContainer h1{
+.heroTitle1{
     margin: 0;
     padding-bottom: 105px;
     text-align: center;
-    font-family: "Linden Hill";
+    /* font-family: "Linden Hill"; */
+    font-family: "Playfair Display";
     font-size: 72px;
+    font-weight: 600 !important;
     font-style: normal;
+    /* font-style: normal; */
     font-weight: 400;
     line-height: 80px; /* 111.111% */
     letter-spacing: -0.25px;
@@ -44,10 +49,11 @@ p, h3{
     color: var(--default-background-color);
     margin: 0;
     text-align: center;
-    font-family: "Linden Hill";
+    /* font-family: "Linden Hill"; */
+    font-family: "Playfair Display";
+    font-weight: 500 !important;
     font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
+    /* font-style: normal; */
     line-height: 40px; 
     padding: 0;
     width: 100%;
@@ -59,12 +65,13 @@ p, h3{
     text-align: center;
     margin: 0;
     padding: 0;
-    font-family: "Linden Hill";
+    /* font-family: "Linden Hill"; */
+    font-family: "Playfair Display";
+    font-weight: 400 !important;
     font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    /* line-height: 24px;  */
-    padding-bottom: 30px;
+    /* font-style: normal; */
+    line-height: 30px; 
+    padding-bottom: 55px;
     letter-spacing: 0.5px;
 
 }
@@ -81,20 +88,54 @@ p, h3{
     justify-content: center;
 }
 
-.helpline{
+/* .helpline{
     display: flex;
     padding: 16px;
     align-items: center;
     gap: 16px;
     border-radius: 16px;
     border: 2px solid #F3F5F6;
+} */
+
+.helpline{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #ffffff;
+    background-color: var(--secondary-color);
+    outline: none;
+    border: none;
+    height: 45px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+   
+        border-radius: 28px;
+        padding: 24px 18px;
+        gap: 10px;
+}
+
+.left svg{
+    font-size: 20px !important;
+    color: #F3F5F6
+}
+
+.helpline .right{
+    gap: 5px;
+}
+
+.helpline .right p{
+    font-size: 13.5px !important; 
+    letter-spacing: var(--label-medium-letter-spacing) !important;
 }
 
 .helpline:hover{
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    transition: ease-in .25s;
+
     cursor: pointer;
+    background-color: #610d0b; /* Darker blue on hover */
+    transform: scale(1.05);
 }
 
 .left{
@@ -104,7 +145,7 @@ p, h3{
 }
 
 .right{
-    gap: 10px;
+    /* gap: 10px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -118,6 +159,7 @@ p, h3{
 }
 
 .introductionContainer{
+    background-color: #FAF9F6;
     padding: 100px 60px 80px 60px;
     display: flex;
     flex-direction: row;
@@ -142,10 +184,10 @@ p, h3{
     gap: 20px;
 }
 
-h5{
+.home h5{
     color: var(--tetiary-color);
-    margin: 0;
     font-family: Roboto;
+    margin: 0;
     font-size: 16px;
     font-style: italic;
     font-weight: 700;
@@ -156,7 +198,7 @@ h5{
 .address h4{
     margin: 0;
     color: var(--headline-text-color);
-    font-family: Roboto;
+    font-family: "Playfair Display", Roboto;
     font-size: 45px;
     font-style: normal;
     font-weight: 900;
@@ -210,7 +252,8 @@ h5{
     margin: 0;
     padding: 0;
     color: var(--body-text-color);
-    background-color: #F0F0F7;
+    /* background-color: #F0F0F7; */
+    background-color: #EDEDED;
 }
 
 .roomsContainer{
@@ -224,10 +267,12 @@ h5{
 .roomsContainer h5{
     margin: 0;
     padding-left: 60px;
+    font-family: Roboto, "Playfair Display";
 }
 
 .roomsContainer h2{
     box-sizing: border-box;
+    font-family: "Playfair Display", Roboto;
     margin: 0;
     padding-left: 60px;
     padding-bottom: 40px;
@@ -235,6 +280,7 @@ h5{
     letter-spacing: var(--display-large-letter-spacing);
     color: var(--headline-text-color);
     font-weight: 400;
+    width: 100%;
 }
 
 .viewAll{
@@ -246,25 +292,26 @@ h5{
 }
 
 .viewAll button{
-    background-color: transparent;
-    color: var(--secondary-color);
+    /* background-color: transparent; */
+    background-color: var(--secondary-color);
+    color: #F3F5F6;
+    /* color: var(--secondary-color); */
     display: flex;
     height: 40px;
     padding: 20px 24px;
     align-items: center;
-    border-radius: 20px;
-    border: 2px solid var(--secondary-color);
+    border-radius: 28px;
+    /* border: 2px solid var(--secondary-color); */
     font-size: var(--label-large-font-size);
     letter-spacing: var(--label-large-letter-spacing);
     font-weight: 500;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .viewAll button:hover{
-    background-color: var(--secondary-color);
-    color: var(--default-background-color);
-    transition: ease-in .25s;
-
+    background-color: #610d0b; /* Darker blue on hover */
+    transform: scale(1.05);
 }
 
 .amenities{
@@ -272,7 +319,8 @@ h5{
     margin: 0;
     padding: 0;
     color: var(--body-text-color);
-    background-color: var(--default-background-color);
+    /* background-color: var(--default-background-color); */
+    background-color: #F0F4F8;
 }
 
 .amenitiesContainer{
@@ -286,7 +334,7 @@ h5{
 }
 
 @media only screen and (max-width: 1024px){
-    .heroContainer h1{
+    .heroTitle1{
         font-size: 60px;
         padding-bottom: 90px;
     }
@@ -298,17 +346,51 @@ h5{
     
     .heroContainer h3{
         font-size: 18px;
-        padding-bottom: 27px;  
+        padding-bottom: 57px;  
     
     }
 
     .heroContainer{
-        padding: 128.4px 30px 40px 30px;
-        /* height: 535px; */
+        padding: 128.4px 30px 100px 30px;
+        height: fit-content;
     }
 
     .helplineContainer{
-        display: none;
+        /* display: none; */
+    }
+
+    .helpline{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #ffffff;
+        background-color: var(--secondary-color);
+        outline: none;
+        border: none;
+        height: 45px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+        box-sizing: border-box;
+        
+
+       
+            border-radius: 28px;
+            padding: 24px 18px;
+            gap: 10px;
+    }
+
+    .left svg{
+        font-size: 20px !important;
+        color: #F3F5F6
+    }
+
+    .helpline .right{
+        gap: 5px;
+    }
+
+    .helpline .right p{
+        font-size: 13.5px !important; 
+        letter-spacing: var(--label-medium-letter-spacing) !important;
     }
 
     .introductionContainer{
@@ -316,7 +398,7 @@ h5{
         gap: 40px
     }
 
-    h5{
+    .home h5{
         font-size: 14px;
         margin: 0;
     }
@@ -395,9 +477,9 @@ h5{
 }
 
 @media only screen and (max-width: 599px){
-    .heroContainer h1{
+    .heroTitle1{
         font-size: 60px;
-        padding-bottom: 70px;
+        padding-bottom: 50px;
     }
     
     .heroContainer h2{
@@ -412,21 +494,56 @@ h5{
     }
 
     .heroContainer{
-        padding: 128.4px 30px 40px 30px;
-        /* height: 535px; */
+        padding: 128.4px 30px 100px 30px;
+        height: fit-content;
     }
 
     .helplineContainer{
-        display: none;
+        /* display: none; */
+    }
+
+    .helpline{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #ffffff;
+        background-color: var(--secondary-color);
+        outline: none;
+        border: none;
+        height: 45px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+        box-sizing: border-box;
+
+
+       
+            border-radius: 28px;
+            padding: 8px 18px;
+            gap: 10px;
+    }
+
+    .left svg{
+        font-size: 20px !important;
+        color: #F3F5F6
+    }
+
+    .helpline .right{
+        gap: 5px;
+    }
+
+    .helpline .right p{
+        font-size: 13.5px !important; 
+        letter-spacing: var(--label-medium-letter-spacing) !important;
     }
 
     .introductionContainer{
         flex-direction: column-reverse;
-        padding: 40px 20px 20px 20px;
+        padding: 50px 20px 50px 20px;
         gap: 20px
     }
 
     .text{
+        width: 410px;
         padding: 0;
         gap: 8px;
     }
@@ -435,7 +552,7 @@ h5{
         gap: 8px;
     }
 
-    h5{
+    .home h5{
         font-size: 12px;
     }
     
@@ -488,45 +605,94 @@ h5{
     
     .viewAll button{
         /* height: 40px; */
-        padding: 10px 15px;
-        font-size: var(--label-small-font-size);
+        border-radius: 28px;
+        padding: 8px 18px;
+        font-size: 13.5px;
+        box-sizing: border-box;
+        background-color: var(--secondary-color);
+        color: #F3F5F6;
         letter-spacing: var(--label-small-letter-spacing);
     }
     
     .amenitiesContainer{
-        padding: 20px;
-        gap: 20px;
+        padding: 50px 20px;
+        gap: 30px;
         justify-content: center;
     }
 }
 
 @media only screen and (max-width: 499px){
-    .heroContainer h1{
-        font-size: 45px;
+    .heroTitle1{
+        font-size: 35px;
         padding-bottom: 67.5px;
         line-height: 44px;
     }
     
     .heroContainer h2{
-        font-size: 27px;
+        font-size: 25px;
         padding-bottom: 40.5px; 
         line-height: 32px;  
     }
     
     .heroContainer h3{
         font-size: 13.5px;
-        line-height: 16px;
-        padding-bottom: 20.5px;  
+        line-height: 23px;
+        padding-bottom: 40.5px;  
     
     }
 
     .heroContainer{
-        padding: 103.4px 20px 15px 20px;
+        padding: 103.4px 10px 100px 10px;
+        height: fit-content;
         /* height: 472.25px; */
     }
 
     .helplineContainer{
-        display: none;
+        /* display: none; */
+    }
+
+    .helpline{
+        display: flex;
+        /* padding: 16px; */
+        /* align-items: center;
+        gap: 16px;
+        border-radius: 16px;
+        border: 2px solid #F3F5F6; */
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* border-radius: 10px; */
+        /* padding: 8px 12px; */
+        gap: 16px;
+        color: #ffffff;
+        background-color: var(--secondary-color);
+        outline: none;
+        border: none;
+        height: 45px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+        box-sizing: border-box;
+
+
+       
+            border-radius: 28px;
+            padding: 8px 18px;
+            gap: 10px;
+    }
+
+    .left svg{
+        font-size: 20px !important;
+        color: #F3F5F6
+    }
+
+    .helpline .right{
+        gap: 5px;
+    }
+
+    .helpline .right p{
+        font-size: 13.5px !important; 
+        letter-spacing: var(--label-small-letter-spacing);
     }
 
     .image img{
@@ -539,7 +705,7 @@ h5{
     
     .text{
         max-width: 390px;
-        width: 90%;
+        width: 100%;
     }
 
     .details p:nth-last-of-type(2){
@@ -554,7 +720,7 @@ h5{
 
     
     .roomsContainer{
-        padding: 15px 0;
+        padding: 50px 0;
     }
     
     .roomsContainer h5{

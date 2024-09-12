@@ -34,12 +34,12 @@ const Amenity: React.FC<AmenityProps> = ({ amenities }) => {
         <img src={amenities.image} alt={amenities.title} />
       </div>
       <div className={amenityStyle.amenityInfo}>
-        <h5>Local Amenities</h5>
+        {/* <h5>Local Amenities</h5> */}
         <h3>{amenities.title}</h3>
         <p>{amenities.content}</p>
-        <div className={amenityStyle.learnMore}>
+        {/* <div className={amenityStyle.learnMore}>
           <button>Learn more</button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

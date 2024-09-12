@@ -14,7 +14,7 @@ const Footer = () => {
         <section className={footerStyle.top}>
           <section className={footerStyle.partA}>
             <section className={footerStyle.firstSec}>
-              <img src={footerImg} alt="New leaders logo with white background" />
+              <img style={{display: 'none'}} src={footerImg} alt="New leaders logo with white background" />
               <p className={footerStyle.motivation}>Discover the pinnacle of luxury and comfort</p>
               <div className={footerStyle.socialMedia}>
                 <Instagram style={(screenWidth <= 800) ? { color: '#E1E1E1', fontSize: 16.8 } : (screenWidth <= 1024) ? { color: '#E1E1E1', fontSize: 22.5 } : { color: '#E1E1E1', fontSize: 30 }} />

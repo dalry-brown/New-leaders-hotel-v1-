@@ -28,6 +28,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
+  /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+
 /*  */
   transition: transform 0.5s ease, opacity 0.5s ease;
   position: relative;
@@ -61,6 +63,8 @@
   cursor: pointer;
   /* display: block; */
   transition: opacity 0.5s ease;
+  box-shadow: 0px 2px 2px 3px rgba(0, 0, 0, 0.1);
+
 }
 
 /* .carouselImage {
@@ -247,7 +251,25 @@
 }
 
 @media only screen and (max-width: 490px){
-  .button{
-    display: block;
+  .button:nth-of-type(1){
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    border-radius: 9px 0 0 9px;
   }
+
+  .button:nth-of-type(2){
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    border-radius: 0 9px 9px 0;
+  }
+
+  
 }

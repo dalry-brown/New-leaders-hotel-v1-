@@ -91,84 +91,7 @@ export const useScreenSizeStore = create<ScreenSizeState>((set) => ({
   setScreenWidth: (width: number) => set({ screenWidth: width }),
 }));
 
-// Room Details
-const vipLoungeRoom = {
-  id: 1,
-  img: viplounge,
-  accType: 'VIP Lounge',
-  features: {
-    bed: 'King-size bed',
-    size: '400 sq ft',
-    occupancy: 2,
-    bathroom: 'En-suite bathroom with rain shower and bathtub',
-    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
-  },
-  additionalServices: {
-    room: '24/7 room service available',
-    service: 'Personalized concierge service',
-  },
-  pricing: 'GHC 3000/Night',
-  elementId: 'vip',
-};
 
-const executiveLoungeRoom = {
-  id: 2,
-  img: executiveLounge,
-  accType: 'Executive Lounge',
-  features: {
-    bed: 'King-size bed',
-    size: '400 sq ft',
-    occupancy: 2,
-    bathroom: 'En-suite bathroom with rain shower and bathtub',
-    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
-  },
-  additionalServices: {
-    room: '24/7 room service available',
-    service: 'Personalized concierge service',
-  },
-  pricing: 'GHC 3000/Night',
-  elementId: 'executive',
-};
-
-const standardDoubleRoom = {
-  id: 3,
-  img: standarddouble,
-  accType: 'Standard Double',
-  features: {
-    bed: 'King-size bed',
-    size: '400 sq ft',
-    occupancy: 2,
-    bathroom: 'En-suite bathroom with rain shower and bathtub',
-    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
-  },
-  additionalServices: {
-    room: '24/7 room service available',
-    service: 'cathering service',
-  },
-  pricing: 'GHC 3000/Night',
-  elementId: 'double',
-};
-
-const singleOccupancyRoom = {
-  id: 4,
-  img: singleOccupancy,
-  accType: 'Single Occupancy',
-  features: {
-    bed: 'King-size bed',
-    size: '400 sq ft',
-    occupancy: 2,
-    bathroom: 'En-suite bathroom with rain shower and bathtub',
-    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
-  },
-  additionalServices: {
-    room: '24/7 room service available',
-    service: 'Personalized concierge service',
-  },
-  pricing: 'GHC 3000/Night',
-  elementId: 'single',
-};
-
-// Room Store
 interface RoomType {
   id: number;
   img: string;
@@ -188,12 +111,93 @@ interface RoomType {
   elementId: string;
 }
 
+// Room Details
+const vipLoungeRoom:RoomType = {
+  id: 1,
+  img: viplounge,
+  accType: 'VIP Lounge',
+  features: {
+    bed: 'King-size bed',
+    size: '400 sq ft',
+    occupancy: 2,
+    bathroom: 'En-suite bathroom with rain shower and bathtub',
+    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
+  },
+  additionalServices: {
+    room: '24/7 room service available',
+    service: 'Personalized concierge service',
+  },
+  pricing: 'GHC 3000/Night',
+  elementId: 'vip',
+};
+
+const executiveLoungeRoom:RoomType = {
+  id: 2,
+  img: executiveLounge,
+  accType: 'Executive Lounge',
+  features: {
+    bed: 'King-size bed',
+    size: '400 sq ft',
+    occupancy: 2,
+    bathroom: 'En-suite bathroom with rain shower and bathtub',
+    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
+  },
+  additionalServices: {
+    room: '24/7 room service available',
+    service: 'Personalized concierge service',
+  },
+  pricing: 'GHC 3000/Night',
+  elementId: 'executive',
+};
+
+const standardDoubleRoom:RoomType = {
+  id: 3,
+  img: standarddouble,
+  accType: 'Standard Double',
+  features: {
+    bed: 'King-size bed',
+    size: '400 sq ft',
+    occupancy: 2,
+    bathroom: 'En-suite bathroom with rain shower and bathtub',
+    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
+  },
+  additionalServices: {
+    room: '24/7 room service available',
+    service: 'cathering service',
+  },
+  pricing: 'GHC 3000/Night',
+  elementId: 'double',
+};
+
+const singleOccupancyRoom:RoomType ={
+  id: 4,
+  img: singleOccupancy,
+  accType: 'Single Occupancy',
+  features: {
+    bed: 'King-size bed',
+    size: '400 sq ft',
+    occupancy: 2,
+    bathroom: 'En-suite bathroom with rain shower and bathtub',
+    amenities: 'High speed Wi-Fi, flat-screen TV, sitting room, work desk, air condition',
+  },
+  additionalServices: {
+    room: '24/7 room service available',
+    service: 'Personalized concierge service',
+  },
+  pricing: 'GHC 3000/Night',
+  elementId: 'single',
+};
+
+// Room Store
+
+
 interface Room {
   id: number;
   roomType: RoomType;
   checkIn: number|null;
   checkOut: number|null;
   number: number;
+  index: Number;
 }
 
 interface RoomState {
@@ -206,7 +210,8 @@ interface RoomState {
   resetRooms: () => void;
 }
 
-export const useRoomStore = create<RoomState>((set) => {
+export const useRoomStore = create<RoomState>(
+  (set) => {
   const rooms: Room[] = [
     {
       id: 1,
@@ -214,6 +219,7 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 0
     },
     {
       id: 2,
@@ -221,6 +227,7 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 1
     },
     {
       id: 3,
@@ -228,6 +235,7 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 0
     },
     {
       id: 4,
@@ -235,6 +243,7 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 0
     },
     {
       id: 5,
@@ -242,6 +251,7 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 1
     },
     {
       id: 6,
@@ -249,6 +259,7 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 2
     },
     {
       id: 7,
@@ -256,6 +267,7 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 2
     },
     {
       id: 8,
@@ -263,12 +275,16 @@ export const useRoomStore = create<RoomState>((set) => {
       checkIn: null,
       checkOut: null,
       number: 1,
+      index: 3
     },
   ];
 
   const initialUniqueRooms: Room[] = [];
   const requiredTypes:string[] = ['VIP Lounge', 'Executive Lounge', 'Standard Double', 'Single Occupancy']
-  rooms.forEach((room) => {
+  
+    
+  // Present one of each of the types in requiredtypes
+    rooms.forEach((room) => {
     if (requiredTypes.includes(room.roomType.accType) && !initialUniqueRooms.some(initRoom => initRoom.roomType.accType === room.roomType.accType)) {
       initialUniqueRooms.push(room);
     }
@@ -292,8 +308,20 @@ export const useRoomStore = create<RoomState>((set) => {
   };
 });
 
+export const useTempRoom = create((set) =>( {
+
+}))
+
 export const useRoomSettingsStore = create((set) => ({
   roomType: '',
+  tempRoom: {
+    id: '',
+    roomType: null,
+    checkIn: null,
+    checkOut: null,
+    number: null,
+  },
+  setTempRoom: (room) => set({ tempRoom: room }),
   setVipRoomType: () => set({roomType: 'VIP Lounge'}),
   setExecutiveRoomType: () => set({roomType: 'Executive Lounge'}),
   setDoubleRoomType: () => set({roomType: 'Standard Double'}),
@@ -307,3 +335,4 @@ export const useRoomSettingsStore = create((set) => ({
 //   decrement: set((state: { numberOfPeople: number; }) => ({numberOfPeople: state.numberOfPeople - 1}))
   // 
 }))
+

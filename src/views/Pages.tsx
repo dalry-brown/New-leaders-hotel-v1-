@@ -6,18 +6,20 @@ import Home from '../views/Home'
 import About from '../views/About'
 import RoomsAndSuites from '../views/RoomsAndSuites'
 import Contacts from '../views/Contact'
-import Booking from '../views/Booking'
+import ScrollToTopOnMount from '../components/universal-components/ScrollToTopOnMount'
+// import Booking from '../views/Booking'
 
 const Pages = () => {
   return (
       <>
-          <Navbar colorState={'colored'}/>
+      <ScrollToTopOnMount/>
+      <Navbar colorState={'colored'} />
             <Routes>
               <Route path='/' element={<Home/> } />
               <Route path='/about' element={<About/> } />
               <Route path='/rooms-and-suites' element={<RoomsAndSuites/> } />
               <Route path='/contact' element={<Contacts/> } />
-              <Route path='/booking' element={<Booking/> } />
+              {/* <Route path='/booking' element={<Booking/> } /> */}
             </Routes>
           <Footer />
           

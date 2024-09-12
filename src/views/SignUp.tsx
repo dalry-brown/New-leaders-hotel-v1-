@@ -4,8 +4,12 @@ import loginImg from "../assets/loginImg.png"
 import google from "../assets/google.png"
 import { Link } from 'react-router-dom'
 import { KeyboardReturn } from '@mui/icons-material'
+import { ArrowBackRounded } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   return (
     <main className={signUpStyle.signUp}>
       <div className={signUpStyle.signUpContainer}>
@@ -13,51 +17,52 @@ const SignUp = () => {
           {/* <KeyboardReturn style={{color: 'black'}}/> */}
           <img src={loginImg} alt="Swimming pool" />
         </section>
-        <section className={signUpStyle.signUpForm}>
-          <h2>We're glad to have you</h2>
+        <section style={{height: '760px'}} className={signUpStyle.signUpForm}>
+        <div className={signUpStyle.backArrow}><ArrowBackRounded onClick={() => {navigate(-1)}}></ArrowBackRounded></div>
+          <h2 className={signUpStyle.loginWelcomeMsg}>We're glad to have you</h2>
           <form action="">
             <fieldset>
-              <label htmlFor="firstname">First Name</label>
+              <label className={signUpStyle.signLabel} htmlFor="firstname">First Name</label>
               <input
                 type="text"
                 id='firstname'
               />
             </fieldset>
             <fieldset>
-              <label htmlFor="lastname">Last Name</label>
+              <label className={signUpStyle.signLabel} htmlFor="lastname">Last Name</label>
               <input
                 type="text"
                 id='lastname'
               />
             </fieldset>
             <fieldset>
-              <label htmlFor="email">Email</label>
+              <label  className={signUpStyle.signLabel} htmlFor="email">Email</label>
               <input
                 type="text"
                 id='email'
               />
             </fieldset>
             <fieldset>
-              <label htmlFor="password">Password</label>
+              <label className={signUpStyle.signLabel} htmlFor="password">Password</label>
               <input
-                type="text"
+                type="password"
                 id='password'
               />
             </fieldset>
             <fieldset>
-              <label htmlFor="confirmPassword">Confirm Password</label>
+              <label className={signUpStyle.signLabel} htmlFor="confirmPassword">Confirm Password</label>
               <input
-                type="text"
+                type="password"
                 id='confirmPassword'
               />
             </fieldset>
-            <fieldset>
-              <label htmlFor="verificationCode">Verification code</label>
+            {/* <fieldset>
+              <label className={signUpStyle.signLabel} htmlFor="verificationCode">Verification code</label>
               <input
                 type="text"
                 id='verificationCode'
               />
-            </fieldset>
+            </fieldset> */}
             <fieldset className={signUpStyle.newsletter}>
             <div className={signUpStyle.group}>
               <label className={signUpStyle.switch}>
@@ -65,9 +70,9 @@ const SignUp = () => {
               <input type="checkbox" />
               <span className={`${signUpStyle.slider} ${signUpStyle.round}`}></span>
               </label>
-              <label>Subscribe to newsletter</label>
+              <label className={signUpStyle.subscribeNote}>Subscribe to newsletter</label>
             </div>
-            <label className={signUpStyle.verify}>Receive verification code</label>
+            {/* <label className={signUpStyle.verify}>Receive verification code</label> */}
             </fieldset>
             <div className={signUpStyle.btnContainer}>
               <button className={signUpStyle.sign}>Sign Up</button>

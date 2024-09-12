@@ -6,6 +6,8 @@
     font-family: var(--default-font-family);
     font-size: var(--body-large-font-size); 
     letter-spacing: var(--body-large-letter-spacing);
+    z-index: 0;
+
 }
 
 h1, h2, h3, h4, p{
@@ -56,7 +58,8 @@ header button:hover{
     justify-content: flex-start;
     width: 168px;
     border-radius: 4px;
-    background-color: var(--secondary-color);
+    background-color: var(--default-background-color);
+    color: var(--body-text-color);
     position: absolute;
     z-index: 99999px;
     box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
@@ -74,7 +77,7 @@ header button:hover{
   }
 
     .dropLink{
-        color: #F3F5F6;
+        color: var(--headline-text-color);
         text-decoration: none;
         margin: 0;
         padding: 12px;
@@ -82,13 +85,13 @@ header button:hover{
       }
     
       .dropLink:hover{
-        background-color: var(--default-background-color);
+        background-color: #5E5E5E;
         transition: ease-in .25s;
-        color: var(--secondary-color);
+        color: var(--default-background-color);
       }
     
 
-label{
+.roomsAndSuites label{
     margin: 0;
     padding: 0;
     font-size: var(--label-large-font-size); 
@@ -132,7 +135,7 @@ label{
 }
 
 .room h2{
-    font-size: var(--headline-large-font-size);
+    /* font-size: var(--headline-large-font-size); */
     letter-spacing: var(--headline-large-letter-spacing);
     color: #A11813;
     margin: 0;
@@ -280,7 +283,7 @@ label{
         top: 43px;
     }
 
-    label{
+    .roomsAndSuites label{
         font-size: var(--label-medium-font-size); 
         letter-spacing: var(--label-medium-letter-spacing);
     }
@@ -431,7 +434,7 @@ label{
         gap: 8px;
     }
 
-    label{
+    .roomsAndSuites label{
         font-size: var(--label-small-font-size); 
         letter-spacing: var(--label-small-letter-spacing);
     }

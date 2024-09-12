@@ -73,8 +73,8 @@ const Home = () => {
       <div className={homeStyle.homeContainer}>
         <section className={homeStyle.hero}>
           <section className={homeStyle.heroContainer}>
-            <h1>Welcome to Your Luxurious Escape and Comfort</h1>
-            <h2>Experience Unparalleled Luxury and Create Unforgettable Memories</h2>
+            <h1 className={homeStyle.heroTitle1}>Welcome to Your Luxurious Escape and Comfort</h1>
+            <h2 className={homeStyle.heroTitle2}>Experience Unparalleled Luxury and Create Unforgettable Memories</h2>
             <div className={homeStyle.heroAbt}>
               <h3>Discover the pinnacle of luxury and comfort. Immerse yourself in a serene haven where elegance meets exceptional service. Your unforgettable stay begins here.</h3>
             </div>
@@ -82,10 +82,11 @@ const Home = () => {
               <Link style={{textDecoration: 'none', color: 'inherit'}} to='/contact#contactUs'>
               <div className={homeStyle.helpline}>
                 <div className={homeStyle.left}>
-                  <Call style={{ fontSize: 24, color: '#F3F5F6'}}/>
+                  {/* <Call style={{ fontSize: 24, color: '#F3F5F6'}}/> */}
+                  <Call/>
                 </div>
                 <div className={homeStyle.right}>
-                  <p>Helpline</p>
+                  <p>Helpline:</p>
                   <p> +233   24   849   8755</p>
                 </div>
                 </div>
@@ -102,7 +103,7 @@ const Home = () => {
                   comfort</h4>
                 <p>Welcome to New Leaders Hotel, where luxury meets hospitality at its finest. At our hotel, we are committed to exceeding your expectations with impeccable service, exquisite accommodations, and a dedication to creating memorable experiences. Whether you're here for business or leisure, we invite you to indulge in our world of luxurious comfort and unparalleled elegance.</p>
               </div>
-              <div className={homeStyle.reference}>
+              {/* <div className={homeStyle.reference}>
                 <div className={homeStyle.avatar}>
                   <img src={ceoAvatar} alt="CEO's avatar picture"/>
                 </div>
@@ -110,7 +111,7 @@ const Home = () => {
                   <p>Joseph Appiah</p>
                   <p>Director and Chief Operations Officer</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className={homeStyle.image}>
               <img src={welcomeImg} alt="Relaxation couches" />
