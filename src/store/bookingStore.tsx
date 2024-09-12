@@ -47,7 +47,7 @@ interface bookingStylesChangesState {
     completedPaymentState: bookingStateType;
 }
 
-export const useBookingStyleChanges = create<bookingStylesChangesState>((set) => ({
+export const useBookingStyleChanges = create<bookingStylesChangesState>(() => ({
     defaultSignInState: {
         boxShadow: '0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.30)',
         backgroundDisplay: 'none',
